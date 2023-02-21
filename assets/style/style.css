@@ -22,6 +22,11 @@
     background-color: #2e2e2e!important;
 }
 
+/*** structura ***/
+main{
+    min-height: 70vh;
+}
+
 /*** carousel ***/
 .carousel-inner{
     background-color: #000;
@@ -94,4 +99,29 @@ footer ul{
     .form-contact{
         width: 50%;
     }
+}
+
+/*** table ***/
+
+table{
+    caption-side: top;
+    min-width: 90%;
+}
+
+table caption{
+    background-color: #d90368;
+}
+
+th, caption{
+    font-weight: bold;
+    text-align: center;
+}
+
+table *{
+    border: #000 1px solid;
+    padding: 0.5rem;
+}
+
+tbody tr:nth-child(odd){
+    background-color: #2e2e2e;
 }
