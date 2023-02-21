@@ -82,3 +82,16 @@ footer ul{
     list-style: none;
     height: 100%;
 }
+
+
+/*** form contact ***/
+
+.form-contact{
+    width: 90%;
+}
+
+@media screen and (min-width:768px){
+    .form-contact{
+        width: 50%;
+    }
+}
