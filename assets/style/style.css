@@ -17,7 +17,6 @@
 
 .color-primary{
     color: #d90368;
-    text-shadow: #fff 0px 0px 10px;
 }
 
 .btn-primary{
@@ -95,7 +94,11 @@ nav{
 .card, .form-contact{
     border: none;
     border: #ad0956 1px solid;
-    box-shadow: #d90368 0px 0px 4px;
+    box-shadow: #d90368 0px 0px 2px;
+}
+
+.card:hover{
+    box-shadow: #d90368 0px 0px 10px;
 }
 
 .card-details{
@@ -122,6 +125,10 @@ footer{
 
 footer ul i{
     font-size: 32px;
+}
+
+footer ul i:hover{
+    text-shadow: #fff 0px 0px 10px;
 }
 
 footer ul{
