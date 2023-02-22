@@ -1,3 +1,9 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 /*** color ***/
 .btn-primary{
     background-color: #d90368;
@@ -23,8 +29,15 @@
 }
 
 /*** structura ***/
-main{
-    min-height: 70vh;
+body{
+    min-height: 100vh;
+}
+
+/*** nav ***/
+nav{
+    z-index: 100;
+    border-bottom: #ad0956 solid 1px;
+    box-shadow:#d90368 0px 2px 4px;
 }
 
 /*** carousel ***/
@@ -41,10 +54,10 @@ main{
 
 .carousel-item h1{
     font-family: 'Gloock', serif;
-    color: #d90368;
+    color: #ff1d86;
     font-size: 50px;
     transform: translate(-50%, -50%);
-    text-shadow: #fff 0px 0px 2rem;
+    text-shadow: #000 0px 0px 1rem;
 }
 
 @media only screen and (min-width:540px) {
@@ -68,9 +81,32 @@ main{
 
 /*** card ***/
 
+
 .card{
     text-align: center;
-    max-width: 18rem
+    max-width: 18rem;
+}
+
+.card img{
+    height: 40%;
+    object-fit: cover;
+}
+
+.card, .form-contact{
+    border: none;
+    border: #ad0956 1px solid;
+    box-shadow: #d90368 0px 0px 4px;
+}
+
+.card-details{
+    min-width: 75%;
+    min-height: 80%;
+}
+
+.card-details img{
+    padding: 1rem;
+    width: 100%;
+    height: auto;
 }
 
 .price{
@@ -79,6 +115,11 @@ main{
 }
 
 /*** footer ***/
+footer{
+    border-top: #ad0956 1px solid;
+    box-shadow: #d90368 0px -2px 3px;
+}
+
 footer ul i{
     font-size: 32px;
 }
