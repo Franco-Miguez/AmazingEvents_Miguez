@@ -37,6 +37,8 @@ nav{
     z-index: 100;
     border-bottom: #ad0956 solid 1px;
     box-shadow:#d90368 0px 2px 4px;
+    position: sticky!important;
+    top: 0;
 }
 
 /*** carousel ***/
@@ -141,6 +143,10 @@ footer ul{
 
 .form-contact{
     width: 90%;
+}
+
+.form-contact span{
+    display: block;
 }
 
 @media screen and (min-width:768px){
