@@ -1,4 +1,7 @@
-import date from "./amazing.js"
-import upcommingDate from "./main.js"
+import data from "./amazing.js"
+import {upcomingEvents, createCardEvents} from "./events.js"
 
-console.table(upcommingDate(date.events,date.currentDate))
+const contentCards = document.getElementById("content-cards")
+
+const events = upcomingEvents(data.events, data.currentDate)
+contentCards.appendChild(createCardEvents(events))

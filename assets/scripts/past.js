@@ -1,4 +1,8 @@
-import date from "./amazing.js"
-import pastEvents from "./pastEvents.js"
+import data from "./amazing.js"
+import {pastEvents, createCardEvents} from "./events.js"
 
-console.table(pastEvents(date.events, date.currentDate))
+const contentCards = document.getElementById("content-cards")
+const events = pastEvents(data.events, data.currentDate)
+
+contentCards.appendChild(createCardEvents(events))
+
