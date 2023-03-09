@@ -2,29 +2,27 @@
  * return array of events
  */
 export function orderEvents(events){
-    const arrayOrder = events;
-    for(let i = 0; i < arrayOrder.length; i++){
-        for(let j = i; j < arrayOrder.length; j++){
-            if(arrayOrder[i].date < arrayOrder[j].date){
-                const aux = arrayOrder[i]
-                arrayOrder[i] = arrayOrder[j]
-                arrayOrder[j] = aux
-            }
+    events.sort((a,b) => {
+        if (a.date === b.date){
+            return 0
+        }else if (a.date < b.date){
+            return 1
+        }else if( a.date > b.date){
+            return -1
         }
-    }
-    return arrayOrder
+    })
+    return events
 }
 
 /** filter upcoming events
  * return array of events
  */
 export function upcomingEvents(events, date){
-    let arrayUpcomingEvents=[]
-    for (let event of events) {
-        if (event.date > date) {
-            arrayUpcomingEvents.push(event);
-        }
-    }
+    const arrayUpcomingEvents=[]
+    events.forEach(event => {
+        if(event.date > date)
+            arrayUpcomingEvents.push(event)
+    })
     return orderEvents(arrayUpcomingEvents)
 }
 
@@ -32,12 +30,11 @@ export function upcomingEvents(events, date){
  * return array of events
 */
 export function pastEvents(events, date){
-    let arrayPastEvents=[]
-    for (let event of events) {
-        if (event.date < date) {
+    const arrayPastEvents=[]
+    events.forEach(event => {
+        if (event.date < date)
             arrayPastEvents.push(event)
-        }
-    }
+    })
     return orderEvents(arrayPastEvents)
 }
 
@@ -45,12 +42,11 @@ export function pastEvents(events, date){
  * return array whit events
  */
 export function todayEvents(events, date){
-    let arrayTodayEvents= []
-    for (let event of events) {
-        if (event.date == date) {
-            arrayDateEvents.push(event)
-        }
-    }
+    const arrayTodayEvents= []
+    events.forEach((event) => {
+        if (event.date == date)
+            arrayTodayEvents.push(event)
+    })
     return orderEvents(arrayTodayEvents)
 }
 
@@ -59,7 +55,7 @@ export function todayEvents(events, date){
  */
 export function createCardEvents(events, ruta="./"){
     const cardEvents = document.createDocumentFragment()
-    for (let event of events) {
+    events.forEach(event => {
         const section = document.createElement('section')
         section.classList = ['card bg-secondary text-light']
         section.innerHTML = `
@@ -73,6 +69,6 @@ export function createCardEvents(events, ruta="./"){
                     </div>
                 </div>`
         cardEvents.appendChild(section)
-    }
+    })
     return cardEvents
 }
