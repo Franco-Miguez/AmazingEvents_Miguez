@@ -1,5 +1,8 @@
-/** order events for date
+/**
+ * order events for date
  * return array of events
+ * @param {array whit object event} events to ordered
+ * @returns oredered array
  */
 export function orderEvents(events){
     events.sort((a,b) => {
@@ -14,8 +17,12 @@ export function orderEvents(events){
     return events
 }
 
-/** filter upcoming events
- * return array of events
+/**
+ *filter upcoming events
+ *return array of events
+ * @param {array whit object event} events it's event to filter
+ * @param {string} date it's today date
+ * @returns array
  */
 export function upcomingEvents(events, date){
     const arrayUpcomingEvents=[]
@@ -26,9 +33,12 @@ export function upcomingEvents(events, date){
     return orderEvents(arrayUpcomingEvents)
 }
 
-/** filter past events
- * return array of events
-*/
+/**
+ * filter past events
+ * @param {array whit object event} events to filder
+ * @param {string} date it's today date
+ * @returns array
+ */
 export function pastEvents(events, date){
     const arrayPastEvents=[]
     events.forEach(event => {
@@ -38,8 +48,11 @@ export function pastEvents(events, date){
     return orderEvents(arrayPastEvents)
 }
 
-/** filter events the today
- * return array whit events
+/**
+ * filter events the today
+ * @param {array whit object events} events it's event to filter
+ * @param {string} date it's today date
+ * @returns array
  */
 export function todayEvents(events, date){
     const arrayTodayEvents= []
@@ -50,10 +63,13 @@ export function todayEvents(events, date){
     return orderEvents(arrayTodayEvents)
 }
 
-/** create templates the cards events
- *return a fragment
+/**
+ * create templates the cards events
+ * @param {array whit object event} events it's events to create template
+ * @param {string} ruta it's path the scripts
+ * @returns fragment
  */
-export function createCardEvents(events, ruta="./"){
+export function createCardEvents(events, path="./"){
     const cardEvents = document.createDocumentFragment()
     events.forEach(event => {
         const section = document.createElement('section')
@@ -65,7 +81,7 @@ export function createCardEvents(events, ruta="./"){
                     <p class="card-text">${event.description}</p>
                     <div class="d-flex flex-row justify-content-around ">
                         <div class="price align-self-end">$${event.price}</div>
-                        <a href="${ruta}details.html" class="btn btn-primary">see more</a>
+                        <a href="${path}details.html" class="btn btn-primary">see more</a>
                     </div>
                 </div>`
         cardEvents.appendChild(section)

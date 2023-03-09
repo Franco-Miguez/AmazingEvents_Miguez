@@ -1,6 +1,6 @@
 /**
  * create the fragment whit image
- * @param {object events} events 
+ * @param {array whit object events} events
  * @returns fragment whit images
  */
 export function createImages(events) {
@@ -22,7 +22,7 @@ export function createImages(events) {
 
 /**
  * create the div whit h1 for the title in the banner
- * @param {text} title
+ * @param {text} title for the header
  * @returns h1 whit text
  */
 export function createTitle(title){
