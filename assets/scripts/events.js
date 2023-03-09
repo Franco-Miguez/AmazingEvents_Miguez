@@ -88,3 +88,41 @@ export function createCardEvents(events, path="./"){
     })
     return cardEvents
 }
+
+/**
+ * all catogories not duplicated
+ * @param {array whit object event} events it's events to filter categories
+ * @returns array of categories
+ */
+export function allCategories(events){
+    const arrayCategories = []
+    events.forEach(event => {
+        if (arrayCategories.indexOf(event.category) === -1)
+            arrayCategories.push(event.category)
+    })
+    arrayCategories.sort()
+    return arrayCategories
+}
+
+/**
+ * create fragment whit categories
+ * @param {array} categories name of categories
+ * @returns fragment
+ */
+export function createItemCategory(categories){
+    const arrayCategories = document.createDocumentFragment()
+
+    categories.forEach(category => {
+        const div = document.createElement('div')
+        div.classList.add("form-check", "form-switch", "form-check-inline")
+        div.innerHTML = `
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" role="switch" id="${category}" name="${category}"
+                        value="${category}">
+                    ${category}
+                </label>
+        `
+        arrayCategories.appendChild(div)
+    })
+    return arrayCategories
+}
