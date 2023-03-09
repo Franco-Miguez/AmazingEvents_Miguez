@@ -4,13 +4,13 @@
  * @param {array whit object event} events to ordered
  * @returns oredered array
  */
-export function orderEvents(events){
-    events.sort((a,b) => {
-        if (a.date === b.date){
+export function orderEvents(events) {
+    events.sort((a, b) => {
+        if (a.date === b.date) {
             return 0
-        }else if (a.date < b.date){
+        } else if (a.date < b.date) {
             return 1
-        }else if( a.date > b.date){
+        } else if (a.date > b.date) {
             return -1
         }
     })
@@ -24,10 +24,10 @@ export function orderEvents(events){
  * @param {string} date it's today date
  * @returns array
  */
-export function upcomingEvents(events, date){
-    const arrayUpcomingEvents=[]
+export function upcomingEvents(events, date) {
+    const arrayUpcomingEvents = []
     events.forEach(event => {
-        if(event.date > date)
+        if (event.date > date)
             arrayUpcomingEvents.push(event)
     })
     return orderEvents(arrayUpcomingEvents)
@@ -39,8 +39,8 @@ export function upcomingEvents(events, date){
  * @param {string} date it's today date
  * @returns array
  */
-export function pastEvents(events, date){
-    const arrayPastEvents=[]
+export function pastEvents(events, date) {
+    const arrayPastEvents = []
     events.forEach(event => {
         if (event.date < date)
             arrayPastEvents.push(event)
@@ -54,8 +54,8 @@ export function pastEvents(events, date){
  * @param {string} date it's today date
  * @returns array
  */
-export function todayEvents(events, date){
-    const arrayTodayEvents= []
+export function todayEvents(events, date) {
+    const arrayTodayEvents = []
     events.forEach((event) => {
         if (event.date == date)
             arrayTodayEvents.push(event)
@@ -69,7 +69,7 @@ export function todayEvents(events, date){
  * @param {string} ruta it's path the scripts
  * @returns fragment
  */
-export function createCardEvents(events, path="./"){
+export function createCardEvents(events, path = "./") {
     const cardEvents = document.createDocumentFragment()
     events.forEach(event => {
         const section = document.createElement('section')
@@ -94,7 +94,7 @@ export function createCardEvents(events, path="./"){
  * @param {array whit object event} events it's events to filter categories
  * @returns array of categories
  */
-export function allCategories(events){
+export function allCategories(events) {
     const arrayCategories = []
     events.forEach(event => {
         if (arrayCategories.indexOf(event.category) === -1)
@@ -109,7 +109,7 @@ export function allCategories(events){
  * @param {array} categories name of categories
  * @returns fragment
  */
-export function createItemCategory(categories){
+export function createItemCategory(categories) {
     const arrayCategories = document.createDocumentFragment()
 
     categories.forEach(category => {
@@ -117,7 +117,7 @@ export function createItemCategory(categories){
         div.classList.add("form-check", "form-switch", "form-check-inline")
         div.innerHTML = `
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" role="switch" id="${category}" name="${category}"
+                    <input class="form-check-input" type="checkbox" role="switch" id="${category}" name="category"
                         value="${category}">
                     ${category}
                 </label>

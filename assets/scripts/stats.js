@@ -1,5 +1,5 @@
 import data from "./amazing.js";
-import { createImages, createTitle} from "./banner.js";
+import { createImages, createTitle } from "./banner.js";
 
 const contentBanner = document.getElementById("content-banner")
 

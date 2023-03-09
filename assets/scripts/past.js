@@ -1,7 +1,9 @@
 import data from "./amazing.js"
-import {pastEvents, createCardEvents, 
-    allCategories, createItemCategory} from "./events.js"
-import { createImages, createTitle} from "./banner.js";
+import {
+    pastEvents, createCardEvents,
+    allCategories, createItemCategory
+} from "./events.js"
+import { createImages, createTitle } from "./banner.js";
 
 const contentCards = document.getElementById("content-cards")
 const contentBanner = document.getElementById("content-banner")
