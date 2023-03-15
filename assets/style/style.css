@@ -109,6 +109,10 @@ nav {
     transform: scale(1);
 }
 
+.card p{
+    text-align: left;
+}
+
 .card-details {
     min-width: 75%;
     min-height: 80%;
