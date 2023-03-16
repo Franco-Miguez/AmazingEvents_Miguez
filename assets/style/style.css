@@ -92,6 +92,10 @@ nav {
     transform: scale(0.9);
 }
 
+.card li{
+    list-style-type: none;
+}
+
 .card img {
     height: 40%;
     object-fit: cover;

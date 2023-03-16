@@ -87,7 +87,7 @@ export function createCardEvents(events, path = "./") {
                     <p class="card-text">${event.description}</p>
                     <div class="d-flex flex-row justify-content-around">
                         <div class="price align-self-end">$${event.price}</div>
-                        <a href="${path}details.html" class="btn btn-primary">see more</a>
+                        <a href="${path}details.html?id=${event._id}" class="btn btn-primary">see more</a>
                     </div>
                 </div>`
         cardEvents.appendChild(section)
