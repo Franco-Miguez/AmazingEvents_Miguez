@@ -8,10 +8,11 @@ const cardBody = document.querySelector('.card-body')
 const event = data.events.find(event => event._id == id)
 const cardImage = document.querySelector('#card-img')
 
+//insert image
 cardImage.innerHTML = `
                     <img src="${event.image}" class="img-fluid rounded" alt="image the event ${event.name}">
 `
-
+// insert data the events
 cardBody.innerHTML = `
     <ul class="d-flex flex-column">
         <li><h3 class="card-title">${event.name.toUpperCase()}</h3></li>

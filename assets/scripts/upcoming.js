@@ -5,21 +5,24 @@ import {
 } from "./events.js"
 import { createImages, createTitle } from "./banner.js";
 
+//elements the dom
 const contentCards = document.getElementById("content-cards")
 const contentBanner = document.getElementById("content-banner")
 const contentCategories = document.getElementById("content-categories")
 const inputSearch = document.querySelector("input[placeholder='search']")
 const form = document.forms[0]
 
+// filter and order events. filter the category
 const events = upcomingEvents(data.events, data.currentDate)
 const categories = allCategories(data.events)
 
+//add image to banner and card events
 contentBanner.appendChild(createImages(events))
 contentBanner.appendChild(createTitle("UPCOMING EVENTS"))
 contentCategories.appendChild(createItemCategory(categories))
 contentCards.appendChild(createCardEvents(events))
 
-
+//events on the dom for update the card events
 inputSearch.addEventListener("keyup", () => {
         contentCards.innerHTML = ""
         contentCards.appendChild(superFilter(events))
