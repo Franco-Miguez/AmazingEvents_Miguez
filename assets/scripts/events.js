@@ -79,16 +79,16 @@ export function createCardEvents(events, path = "./") {
     }
     events.forEach(event => {
         const section = document.createElement('section')
-        section.classList = ['card bg-secondary text-light']
+        section.classList.add('card', 'bg-secondary', 'text-light')
         section.innerHTML = `
                 <img src="${event.image}" class="card-img-top" alt="card image">
-                <div class="card-body column">
+                <div class="card-body column ">
                     <h3 class="card-title">${event.name}</h3>
                     <p class="card-text">${event.description}</p>
-                    <div class="d-flex flex-row justify-content-around">
-                        <div class="price align-self-end">$${event.price}</div>
-                        <a href="${path}details.html?id=${event._id}" class="btn btn-primary">see more</a>
-                    </div>
+                </div>
+                <div class="d-flex flex-row justify-content-around card-footer mb-3">
+                    <div class="price align-self-end">$${event.price}</div>
+                    <a href="${path}details.html?id=${event._id}" class="btn btn-primary">see more</a>
                 </div>`
         cardEvents.appendChild(section)
     })
