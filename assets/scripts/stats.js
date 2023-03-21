@@ -1,7 +1,9 @@
-import data from "./amazing.js";
-import { createImages, createTitle } from "./banner.js";
+import { dataEvents } from "./events.js";
+import { mainBanner } from "./banner.js";
 
-const contentBanner = document.getElementById("content-banner")
+async function main(){
+    const data = await dataEvents()
+    mainBanner("stats", data.events)
+}
 
-contentBanner.appendChild(createImages(data.events))
-contentBanner.appendChild(createTitle("STATS"))
+main()

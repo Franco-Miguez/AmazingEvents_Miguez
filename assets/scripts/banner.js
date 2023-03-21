@@ -1,3 +1,12 @@
+
+export function mainBanner(title, events){
+    title = title.toUpperCase()
+    const contentBanner = document.getElementById("content-banner")
+
+    contentBanner.appendChild(createImages(events))
+    contentBanner.appendChild(createTitle(title))
+}
+
 /**
  * create the fragment whit image
  * @param {array whit object events} events

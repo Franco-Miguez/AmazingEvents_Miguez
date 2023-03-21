@@ -1,3 +1,51 @@
+export async function dataEvents(path="../assets/data/amazing.json"){
+    let data = await fetch(path)
+                    .then(response => response.json())
+                    .then(data => data)
+    return data
+}
+
+export async function mainEvents(events, pathPage="./"){
+    const contentCards = document.getElementById("content-cards")
+
+
+    contentCards.appendChild(createCardEvents(events, pathPage))
+
+}
+
+export async function mainCategories(events){
+    const contentCategories = document.getElementById("content-categories")
+
+    const categories = allCategories(events)
+
+    contentCategories.appendChild(createItemCategory(categories))
+
+}
+
+export async function search(events){
+    const inputSearch = document.querySelector("input[placeholder='search']")
+    const form = document.forms[0]
+    const contentCategories = document.getElementById("content-categories")
+    const contentCards = document.getElementById("content-cards")
+
+    inputSearch.addEventListener("keyup", () => {
+        contentCards.innerHTML = ""
+        contentCards.appendChild(superFilter(events, "./page/"))
+
+    })
+
+    contentCategories.addEventListener("change", () => {
+        contentCards.innerHTML = ""
+        contentCards.appendChild(superFilter(events, "./page/"))
+    })
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault()
+        contentCards.innerHTML = ""
+        contentCards.appendChild(superFilter(events, "./page"))
+    })
+}
+
 /**
  * order events for date
  * return array of events
@@ -66,7 +114,7 @@ export function todayEvents(events, date) {
 /**
  * create templates the cards events
  * @param {array whit object event} events it's events to create template
- * @param {string} ruta it's path the scripts
+ * @param {string} ruta it's path the scripts folder
  * @returns fragment
  */
 export function createCardEvents(events, path = "./") {
