@@ -4,7 +4,7 @@ import {
 import { mainBanner } from "./banner.js";
 
 async function main() {
-    const data = await dataEvents()
+    const data = await dataEvents("./assets/data/amazing.json")
     const events = await orderEvents(data.events)
     console.table(events)
     mainBanner("home", events)
