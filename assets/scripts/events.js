@@ -1,4 +1,132 @@
 /**
+ * @param {string} path of api or json for defaut it's ../assets/data/amazing.json
+ * @returns json
+ */
+export async function dataEvents(path="../assets/data/amazing.json"){
+    let data = await fetch(path)
+                    .then(response => response.json())
+                    .then(data => data)
+    return data
+}
+
+/**
+ * create event card and add it to the element whit id content-card
+ * @param {array} events array the events
+ * @param {string} pathPage path to the page for defaut it's ./
+ */
+export async function mainEvents(events, pathPage="./"){
+    const contentCards = document.getElementById("content-cards")
+
+
+    contentCards.appendChild(createCardEvents(events, pathPage))
+
+}
+
+/**
+ * add checkbox the categories to the element whit id content-categories
+ * @param {array} events array the events
+ */
+export async function mainCategories(events){
+    const contentCategories = document.getElementById("content-categories")
+
+    const categories = allCategories(events)
+
+    contentCategories.appendChild(createItemCategory(categories))
+
+}
+
+/**
+ * see the events in the form and search for string or categories
+ * and add the new cards in the element whit id content-cards
+ * @param {array} events array the events
+ */
+export async function search(events){
+    const inputSearch = document.querySelector("input[placeholder='search']")
+    const form = document.forms[0]
+    const contentCategories = document.getElementById("content-categories")
+    const contentCards = document.getElementById("content-cards")
+
+    inputSearch.addEventListener("keyup", () => {
+        contentCards.innerHTML = ""
+        contentCards.appendChild(superFilter(events, "./page/"))
+
+    })
+
+    contentCategories.addEventListener("change", () => {
+        contentCards.innerHTML = ""
+        contentCards.appendChild(superFilter(events, "./page/"))
+    })
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault()
+        contentCards.innerHTML = ""
+        contentCards.appendChild(superFilter(events, "./page"))
+    })
+}
+
+/**
+ * add new attendance properti whit value
+ * @param {array} events array the events
+ */
+export function eventsAddAttendance(events){
+    events.forEach(event =>{
+        event.attendance = event.estimate?
+                                event.estimate / event.capacity * 100:
+                                event.assistance / event.capacity * 100
+
+    })
+}
+
+/**
+ * create and return array whit object categories whit attributes name - revenues - attendance
+ * @param {array} events whit object events
+ * @returns array whit object categories
+ */
+export function statisticsForCategory(events){
+    const categories = []
+    allCategories(events).forEach(category => {
+        categories.push({name : category})
+    })
+    addRevenuesForCategories(events, categories)
+    addPercentageOfAttendance(events, categories)
+    return categories
+}
+
+/**
+ * add attribute revenues in object categories
+ * @param {array} events whit object events
+ * @param {array} categories whit object categories
+ */
+export function addRevenuesForCategories(events,categories){
+    categories.forEach(category => {
+        category.revenues = 0
+        events.forEach(event => {
+            if (event.category === category.name){
+                category.revenues += event.estimate?
+                                        event.price * event.estimate:
+                                        event.price * event.assistance
+            }
+        })
+    })
+}
+
+/**
+ * add the attribute attendace in object categories
+ * @param {array} events array whit events object
+ * @param {array} categories whit objects categories
+ */
+export function addPercentageOfAttendance(events, categories){
+    categories.forEach(category =>{
+        events.forEach(event => {
+            if(category.name == event.category)
+                "attendance" in category?
+                    category.attendance = (event.attendance + category.attendance)/2:
+                    category.attendance = event.attendance
+        })
+    })
+}
+
+/**
  * order events for date
  * return array of events
  * @param {array whit object event} events to ordered
@@ -66,7 +194,7 @@ export function todayEvents(events, date) {
 /**
  * create templates the cards events
  * @param {array whit object event} events it's events to create template
- * @param {string} ruta it's path the scripts
+ * @param {string} ruta it's path the scripts folder
  * @returns fragment
  */
 export function createCardEvents(events, path = "./") {
