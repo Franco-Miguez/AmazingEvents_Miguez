@@ -28,8 +28,12 @@ async function main(){
                 "Assistance: " + event.assistance:
                 "Estimate: " + event.estimate}</li>
             <li class="mt-4 btn btn-success d-block">$ ${event.price}</li>
+            <li>
+                <a class="btn btn-danger w-100 p-1 mt-3 text-white " href="javascript:history.back()">
+                    GoBack
+                </a>
+            </li
         </ul>
-        <a class="btn btn-danger p-1 mt-3 text-white " href="javascript:history.back()">GoBack</a>
     `
 }
 

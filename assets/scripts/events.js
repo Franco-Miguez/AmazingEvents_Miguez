@@ -39,8 +39,9 @@ export async function mainCategories(events){
  * see the events in the form and search for string or categories
  * and add the new cards in the element whit id content-cards
  * @param {array} events array the events
+ * @param {string} pathPage path to the folder page for defaut it's ./
  */
-export async function search(events){
+export async function search(events, pathPage="./"){
     const inputSearch = document.querySelector("input[placeholder='search']")
     const form = document.forms[0]
     const contentCategories = document.getElementById("content-categories")
@@ -48,19 +49,19 @@ export async function search(events){
 
     inputSearch.addEventListener("keyup", () => {
         contentCards.innerHTML = ""
-        contentCards.appendChild(superFilter(events, "./page/"))
+        contentCards.appendChild(superFilter(events, pathPage))
 
     })
 
     contentCategories.addEventListener("change", () => {
         contentCards.innerHTML = ""
-        contentCards.appendChild(superFilter(events, "./page/"))
+        contentCards.appendChild(superFilter(events, pathPage))
     })
 
     form.addEventListener("submit", (event) => {
         event.preventDefault()
         contentCards.innerHTML = ""
-        contentCards.appendChild(superFilter(events, "./page"))
+        contentCards.appendChild(superFilter(events, pathPage))
     })
 }
 
